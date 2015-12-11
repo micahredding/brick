@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @podcast.title %></h1>
+
+<p>
+  <%= @podcast.image %>
+</p>
+
+<p>
+  <%= @podcast.body %>
+</p>
+
+
+<p>
+  <strong>Author:</strong>
+  <%= @podcast.author %>
+</p>
+
+<p>
+  <strong>Keywords:</strong>
+  <%= @podcast.keywords %>
+</p>
+
+
+<% @podcast.episodes.each do |episode| %>
+  <p><%= link_to episode.title, episode_path(episode) %></p>
+<% end %>
+
+<%= link_to 'Edit', edit_podcast_path(@podcast) %> |
+<%= link_to 'Back', podcasts_path %>

@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Podcasts</h1>
+
+<% @podcasts.each do |podcast| %>
+  <article>
+    <div><%= podcast.image %></div>
+    <div>
+      <h3><%= podcast.title %></h3>
+      <p><%= podcast.body %></p>
+      <%= link_to 'Show', podcast %>
+      <%= link_to 'Edit', edit_podcast_path(podcast) %>
+      <%= link_to 'Destroy', podcast, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </article>
+  <br /><br />
+<% end %>
+
+<br>
+
+<%= link_to 'New Podcast', new_podcast_path %>

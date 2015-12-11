@@ -1,0 +1,57 @@
+<%= form_for(@episode) do |f| %>
+  <% if @episode.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@episode.errors.count, "error") %> prohibited this episode from being saved:</h2>
+
+      <ul>
+      <% @episode.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :number %><br>
+    <%= f.text_field :number %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+  <div class="field">
+    <%= f.label :recorded_at %><br>
+    <%= f.datetime_select :recorded_at %>
+  </div>
+  <div class="field">
+    <%= f.label :published_at %><br>
+    <%= f.datetime_select :published_at %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.text_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :media %><br>
+    <%= f.text_field :media %>
+  </div>
+  <div class="field">
+    <%= f.label :media_length %><br>
+    <%= f.number_field :media_length %>
+  </div>
+  <div class="field">
+    <%= f.label :media_size %><br>
+    <%= f.number_field :media_size %>
+  </div>
+  <div class="field">
+    <%= f.label :podcast_id %><br>
+    <%= f.collection_select(:podcast_id, Podcast.all, :id, :title) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
