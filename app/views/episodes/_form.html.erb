@@ -12,43 +12,43 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :number %><br>
+    <%= f.label :number %>
     <%= f.text_field :number %>
   </div>
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :body %><br>
+    <%= f.label :body %>
     <%= f.text_area :body %>
   </div>
   <div class="field">
-    <%= f.label :recorded_at %><br>
+    <%= f.label :recorded_at %>
     <%= f.datetime_select :recorded_at %>
   </div>
   <div class="field">
-    <%= f.label :published_at %><br>
+    <%= f.label :published_at %>
     <%= f.datetime_select :published_at %>
   </div>
   <div class="field">
-    <%= f.label :image %><br>
+    <%= f.label :image %>
     <%= f.text_field :image %>
   </div>
   <div class="field">
-    <%= f.label :media %><br>
+    <%= f.label :media %>
     <%= f.text_field :media %>
   </div>
   <div class="field">
-    <%= f.label :media_length %><br>
+    <%= f.label :media_length %>
     <%= f.number_field :media_length %>
   </div>
   <div class="field">
-    <%= f.label :media_size %><br>
+    <%= f.label :media_size %>
     <%= f.number_field :media_size %>
   </div>
   <div class="field">
-    <%= f.label :podcast_id %><br>
+    <%= f.label :podcast_id %>
     <%= f.collection_select(:podcast_id, Podcast.all, :id, :title) %>
   </div>
   <div class="actions">

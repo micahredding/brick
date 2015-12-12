@@ -1,30 +1,35 @@
-<p id="notice"><%= notice %></p>
-
-<h1><%= @podcast.title %></h1>
-
 <p>
-  <%= @podcast.image %>
+  <%= cl_image_tag(@podcast.image, :alt => "Sample Image", :width => 800, :height => 200, :crop => :fill) %>
 </p>
 
 <p>
   <%= @podcast.body %>
 </p>
 
-
-<p>
-  <strong>Author:</strong>
-  <%= @podcast.author %>
-</p>
-
-<p>
-  <strong>Keywords:</strong>
-  <%= @podcast.keywords %>
-</p>
-
-
 <% @podcast.episodes.each do |episode| %>
-  <p><%= link_to episode.title, episode_path(episode) %></p>
+  <p><%= link_to episode.title, episode_show_path(episode.podcast.path, episode.number) %></p>
 <% end %>
 
+<p>
+  <strong>Author:</strong> <%= @podcast.author %><br />
+  <strong>Keywords:</strong> <%= @podcast.keywords %><br />
+  <strong>Categories:</strong><br />
+  <ul>
+    <% @podcast.categories.each do |category| %>
+      <li><%= category.nice_name %></li>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_podcast_path(@podcast) %> |
-<%= link_to 'Back', podcasts_path %>
+<%= link_to 'Back', root_path %>
+
+
+
+<% content_for :title do %>
+  <%= @podcast.title %>
+<% end %>
+
+<% content_for :header do %>
+  <h2><%= link_to "brick.media", root_path %> &gt; <%= link_to @podcast.title, podcast_path(@podcast) %></h2>
+<% end %>

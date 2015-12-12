@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
-  resources :episodes
-  resources :podcasts
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  resources :categories
+  resources :episodes, :except => [:show, :index]
+  resources :podcasts, :except => [:show, :index]
+
+  Podcast.all.each do |podcast|
+    get podcast.path => 'podcasts#show', :podcast_path => podcast.path
+  end
+
+  get ':podcast_path/:episode_number' => 'episodes#show', :as => :episode_show
+
+  root 'podcasts#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

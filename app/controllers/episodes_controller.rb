@@ -58,7 +58,13 @@ class EpisodesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_episode
-      @episode = Episode.find(params[:id])
+      if params[:id]
+        @episode = Episode.find(params[:id])
+        @podcast = @episode.podcast
+      elsif params[:podcast_path] && params[:episode_number]
+        @podcast = Podcast.find_by_path(params[:podcast_path])
+        @episode = Episode.where(:podcast_id => @podcast.id, :number => params[:episode_number]).first
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

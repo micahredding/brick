@@ -1,14 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Brick</title>
+  <title><%= yield :title %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <link href="https://plus.google.com/107355867909504468216" rel="publisher">
+
+  <meta property="og:title" content="<%= yield :title %>">
+  <meta property="og:image" content="<%= yield :social_image %>">
+  <meta property="og:site_name" content="brick.media: small podcasts from the human edge">
+  <meta property="og:description" content="<%= yield :social_description %>">
 </head>
 <body>
 
-<%= yield %>
+<div id="notice"><%= notice %></div>
+
+<header>
+  <% if content_for?(:header) %>
+    <%= yield :header %>
+  <% else %>
+    <h2>
+      <%= link_to "brick.media", root_path %>
+      <% if @podcast %>
+        &gt; <%= link_to @podcast.title, podcast_path(@podcast) %>
+      <% end %>
+      <% if @episode %>
+        &gt; <%= link_to @episode.number, episode_path(@episode) %>
+      <% end %>
+    </h2>
+  <% end %>
+
+  <span id="connect">
+    <a href="http://twitter.com/brickcaster"><i class="icon-twitter"></i></a>
+    <a href="http://facebook.com/brickcaster"><i class="icon-facebook"></i></a>
+    <a href="https://plus.google.com/107355867909504468216" rel="publisher"><i class="icon-google-plus"></i></a>
+  </span>
+</header>
+
+<% if @podcast %>
+  <div id="podcast">
+    <h1><%= link_to @podcast.title, podcast_path(@podcast) %></h1>
+  </div>
+<% end %>
+
+<div id="content">
+  <%= yield %>
+</div>
 
 </body>
 </html>

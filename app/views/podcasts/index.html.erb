@@ -1,16 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Podcasts</h1>
-
 <% @podcasts.each do |podcast| %>
   <article>
-    <div><%= podcast.image %></div>
+    <div><%= cl_image_tag(podcast.image, :alt => "Sample Image", :width => 180, :height => 180, :crop => :fill) %></div>
     <div>
-      <h3><%= podcast.title %></h3>
+      <h3><%= link_to podcast.title, podcast_path(podcast) %></h3>
       <p><%= podcast.body %></p>
-      <%= link_to 'Show', podcast %>
-      <%= link_to 'Edit', edit_podcast_path(podcast) %>
-      <%= link_to 'Destroy', podcast, method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   </article>
   <br /><br />
@@ -19,3 +12,7 @@
 <br>
 
 <%= link_to 'New Podcast', new_podcast_path %>
+
+<% content_for :title do %>
+  brick.media
+<% end %>

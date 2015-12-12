@@ -12,29 +12,34 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :path %><br>
+    <%= f.label :path %>
     <%= f.text_field :path %>
   </div>
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :body %><br>
+    <%= f.label :body %>
     <%= f.text_area :body %>
   </div>
   <div class="field">
-    <%= f.label :image %><br>
+    <%= f.label :image %>
     <%= f.text_field :image %>
   </div>
   <div class="field">
-    <%= f.label :author %><br>
+    <%= f.label :author %>
     <%= f.text_field :author %>
   </div>
   <div class="field">
-    <%= f.label :keywords %><br>
+    <%= f.label :keywords %>
     <%= f.text_field :keywords %>
   </div>
+
+  <%= f.collection_check_boxes(:category_ids, Category.all, :id, :nice_name) %>
+
+  <br />
+
   <div class="actions">
     <%= f.submit %>
   </div>
