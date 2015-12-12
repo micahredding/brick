@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :categories
-  resources :episodes, :except => [:show, :index]
-  resources :podcasts, :except => [:show, :index]
 
   Podcast.all.each do |podcast|
     get podcast.path => 'podcasts#show', :podcast_path => podcast.path
