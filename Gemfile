@@ -31,7 +31,8 @@ gem 'bitters'
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'bootstrap', '~> 4.0.0.alpha.2'
-gem "mediaelement_rails"
+gem 'mediaelement_rails'
+gem 'audiojs'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

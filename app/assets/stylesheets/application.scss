@@ -3,6 +3,8 @@
 @import 'neat';
 @import 'base/base';
 @import 'navigation';
+@import 'podcasts';
+@import 'episodes';
 @import 'mediaelement_rails/mediaelementplayer';
 @import 'mediaelement_rails/mejs-skins';
 
@@ -11,49 +13,6 @@ html, body {
   margin: 0;
 }
 
-#podcast {
-  background: #eeeeee;
-  .inner {
-    @include outer-container;
-    padding: 1em;
-    @include media($xtra-large-screen-up) {
-      padding: 2em 0em;
-    }
-    img {
-      float: left;
-      margin-right: 1em;
-      @include media($large-screen-up) {
-        margin-right: 2em;
-      }
-      max-width: 25%;
-      height: auto;
-    }
-    .title {
-      @include h1;
-      a {
-        color: #000000;
-      }
-    }
-    .body {
-      margin: 0.75em 0 0.5em;
-    }
-    ul.podcast-links {
-      li {
-        display: inline;
-        &:after {
-          content: "•";
-          padding: 0.5em;
-        }
-        &:last-child {
-          &:after {
-            content: '';
-            padding: 0;
-          }
-        }
-      }
-    }
-  }
-}
 
 #content {
   @include outer-container;
@@ -66,6 +25,13 @@ html, body {
 #audio-player {
   margin: 1em 0;
   p {
-    margin: 0.5em 0;
+    margin: 1em 0;
   }
+}
+
+ul.category-list {
+  li {
+    list-style-type: disc;
+  }
+  margin-left: 1rem;
 }

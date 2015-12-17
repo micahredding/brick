@@ -5,32 +5,51 @@ header.navigation {
   background-color: #000000;
   color: $navigation-color;
   font-weight: 300;
+  font-size: 1em;
   letter-spacing: 1px;
+  line-height: 1.1em;
 
   .inner {
     @include outer-container;
-    padding: 0.5em 0.5em 0.6em;
     nav {
-      @include span-columns(10);
-    }
-    .site-name {
-      font-size: 1.1em;
+      @include span-columns(3 of 4);
+      @include media($large-screen-up) {
+        @include span-columns(8 of 12);
+      }
     }
     ul.social {
-      @include span-columns(2);
-      font-size: 1.1em;
+      @include span-columns(1 of 4);
+      @include media($large-screen-up) {
+        @include span-columns(4 of 12);
+      }
+    }
+    .site-name {
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      padding-left: 0em;
+      padding-right: 0em;
+    }
+    .podcast-name {
+      padding-left: 0em;
+      padding-left: 0em;
+    }
+    ul.social {
+      text-align: right;
       li {
         display: inline-block;
       }
     }
   }
 
-    a {
-      display: inline-block;
-      color: $navigation-color;
-      padding: 0.2em;
-      &:hover {
-        color: $navigation-color-hover;
-      }
+  a {
+    display: inline-block;
+    color: $navigation-color;
+    padding: 0.5em;
+    &:hover {
+      color: $navigation-color-hover;
     }
+    @include media($large-screen-up) {
+      padding: 0.8em 0.5em 1.1em;
+    }
+  }
 }

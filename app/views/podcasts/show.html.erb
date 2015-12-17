@@ -1,22 +1,13 @@
-<% @podcast.episodes.each do |episode| %>
-  <p><%= link_to episode.title, episode_show_path(episode.podcast.path, episode.number) %></p>
-<% end %>
-
-<p>
-  <strong>Author:</strong> <%= @podcast.author %><br />
-  <strong>Keywords:</strong> <%= @podcast.keywords %><br />
-  <strong>Categories:</strong><br />
-  <ul>
-    <% @podcast.categories.each do |category| %>
-      <li><%= category.nice_name %></li>
-    <% end %>
-  </ul>
-</p>
+<ul class="episode-list">
+  <% @podcast.episodes.each do |episode| %>
+    <li class="episode-link"><%= link_to episode.title, episode_show_path(episode.podcast.path, episode.number) %></li>
+  <% end %>
+</ul>
 
 <% content_for :title do %>
   <%= @podcast.title %>
 <% end %>
 
 <% content_for :header do %>
-  <h2><%= link_to "brick.media", root_path %> &gt; <%= link_to @podcast.title, podcast_path(@podcast) %></h2>
+  <h2><%= link_to Brick::SITENAME, root_path %> &gt; <%= link_to @podcast.title, podcast_path(@podcast) %></h2>
 <% end %>

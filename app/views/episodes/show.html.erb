@@ -11,19 +11,16 @@
   <p><a href="<%= @episode.media %>">(download)</a></p>
 </div>
 
-<div>
+<div class="episode-body">
   <%= @episode.body %>
 </div>
 
-<p><br /></p>
-
-<div>
+<div class="episode-details">
   <%= @episode.title %><br />
   <%= link_to @episode.podcast.title, podcast_path(@episode.podcast) %><br />
   <%= @episode.podcast.author %><br />
-  <%= @episode.published_at %><br />
-  <strong>Recorded:</strong> <%= @episode.recorded_at %><br />
-  <strong>Duration:</strong> <%= @episode.media_length %><br />
+  <%= @episode.published_at.strftime("%F") %><br />
+  Duration: <%= Time.at(@episode.media_length).utc.strftime("%l:%M:%S") %><br />
 </div>
 
 <% content_for :title do %>
@@ -31,7 +28,7 @@
 <% end %>
 
 <% content_for :header do %>
-  <h2><%= link_to "brick.media", root_path %> &gt; <%= link_to @episode.podcast.title, podcast_path(@episode.podcast) %></h2>
+  <h2><%= link_to Brick::SITENAME, root_path %> &gt; <%= link_to @episode.podcast.title, podcast_path(@episode.podcast) %></h2>
 <% end %>
 
 <% content_for :social_image do %>
