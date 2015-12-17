@@ -1,8 +1,9 @@
 class Episode < ActiveRecord::Base
   belongs_to :podcast
+  attr_accessible :title, :number, :podcast_id
 
   def summary
-    body.truncate(255)
+    body ? body.truncate(255) : ""
   end
 
   def url

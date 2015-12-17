@@ -19,8 +19,8 @@
   <%= @episode.title %><br />
   <%= link_to @episode.podcast.title, podcast_path(@episode.podcast) %><br />
   <%= @episode.podcast.author %><br />
-  <%= @episode.published_at.strftime("%F") %><br />
-  Duration: <%= Time.at(@episode.media_length).utc.strftime("%l:%M:%S") %><br />
+  <%= @episode.published_at.present? ? @episode.published_at.strftime("%F") : "" %><br />
+  <%= @episode.media_length.present? ? Time.at(@episode.media_length).utc.strftime("%l:%M:%S") : "" %><br />
 </div>
 
 <% content_for :title do %>

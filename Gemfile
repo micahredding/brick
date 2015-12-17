@@ -23,16 +23,20 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'builder'
+
 gem 'cloudinary'
 gem 'bourbon'
 gem 'neat'
 gem 'bitters'
-
-gem 'activeadmin', github: 'activeadmin'
-gem 'devise'
 gem 'bootstrap', '~> 4.0.0.alpha.2'
 gem 'mediaelement_rails'
 gem 'audiojs'
+
+gem 'activeadmin', github: 'activeadmin'
+gem 'devise'
+gem 'protected_attributes'
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -2,11 +2,8 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  # Podcast.all.each do |podcast|
-  #   get podcast.path => 'podcasts#show', :podcast_path => podcast.path
-  # end
-
   get ':podcast_path/:episode_number' => 'episodes#show', :as => :episode_show
+  get ':podcast_path' => 'podcasts#show', :as => :podcast_show
 
   root 'podcasts#index'
 

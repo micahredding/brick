@@ -151,6 +151,8 @@ GEM
     pg (0.18.4)
     polyamorous (1.3.0)
       activerecord (>= 3.0)
+    protected_attributes (1.1.3)
+      activemodel (>= 4.0.1, < 5.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -250,6 +252,7 @@ DEPENDENCIES
   mediaelement_rails
   neat
   pg
+  protected_attributes
   rails (= 4.2.5)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
