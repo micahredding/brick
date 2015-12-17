@@ -18,31 +18,37 @@
 
 <div id="notice"><%= notice %></div>
 
-<header>
-  <% if content_for?(:header) %>
-    <%= yield :header %>
-  <% else %>
-    <h2>
-      <%= link_to "brick.media", root_path %>
+<header class="navigation" role="banner">
+  <div class="inner">
+    <nav role="navigation">
+      <a href="/" class="site-name">brick.media</a>
       <% if @podcast %>
-        &gt; <%= link_to @podcast.title, podcast_path(@podcast) %>
+        &gt; <a href="<%= podcast_path(@podcast) %>"><%= @podcast.title %></a>
       <% end %>
-      <% if @episode %>
-        &gt; <%= link_to @episode.number, episode_path(@episode) %>
-      <% end %>
-    </h2>
-  <% end %>
+    </nav>
 
-  <span id="connect">
-    <a href="http://twitter.com/brickcaster"><i class="icon-twitter"></i></a>
-    <a href="http://facebook.com/brickcaster"><i class="icon-facebook"></i></a>
-    <a href="https://plus.google.com/107355867909504468216" rel="publisher"><i class="icon-google-plus"></i></a>
-  </span>
+    <ul class="social">
+      <li><a href="http://twitter.com/brickcaster"><i class="icon-twitter"></i></a></li>
+      <li><a href="http://facebook.com/brickcaster"><i class="icon-facebook"></i></a></li>
+      <li><a href="https://plus.google.com/107355867909504468216" rel="publisher"><i class="icon-google-plus"></i></a></li>
+    </ul>
+  </div>
 </header>
 
 <% if @podcast %>
   <div id="podcast">
-    <h1><%= link_to @podcast.title, podcast_path(@podcast) %></h1>
+    <div class="inner">
+      <%= cl_image_tag(@podcast.image, :alt => "Sample Image", :width => 200, :height => 200, :crop => :fill) %>
+      <div class="title"><%= link_to @podcast.title, podcast_path(@podcast) %></div>
+      <div class="body">
+        <%= @podcast.body %>
+      </div>
+      <ul class="podcast-links">
+        <li><%= link_to "RSS", podcast_url(@podcast, :format => :rss) %></li>
+        <li><a href="">iTunes</a></li>
+        <li><a href="">Email</a></li>
+      </ul>
+    </div>
   </div>
 <% end %>
 

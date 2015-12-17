@@ -1,11 +1,3 @@
-<p>
-  <%= cl_image_tag(@podcast.image, :alt => "Sample Image", :width => 800, :height => 200, :crop => :fill) %>
-</p>
-
-<p>
-  <%= @podcast.body %>
-</p>
-
 <% @podcast.episodes.each do |episode| %>
   <p><%= link_to episode.title, episode_show_path(episode.podcast.path, episode.number) %></p>
 <% end %>
@@ -20,10 +12,6 @@
     <% end %>
   </ul>
 </p>
-
-<%= link_to 'Back', root_path %>
-
-
 
 <% content_for :title do %>
   <%= @podcast.title %>
