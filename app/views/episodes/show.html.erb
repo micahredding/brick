@@ -1,26 +1,30 @@
-<h1>
-  <%= @episode.title %>
-</h1>
+<div class="episode">
 
-<div id="audio-player">
-  <audio controls="controls" style="max-width:100%; max-height:100%;">
-    <source src="<%= @episode.media %>" type="audio/mpeg">
-    <source src="<%= @episode.media %>" type="audio/mp3">
-    Your browser does not support HTML5 audio.
-  </audio>
-  <p><a href="<%= @episode.media %>">(download)</a></p>
-</div>
+  <h1>
+    <%= @episode.title %>
+  </h1>
 
-<div class="episode-body">
-  <%= markdown.render(@episode.body) %>
-</div>
+  <div id="audio-player">
+    <audio controls="controls" style="max-width:100%; max-height:100%;">
+      <source src="<%= @episode.media %>" type="audio/mpeg">
+      <source src="<%= @episode.media %>" type="audio/mp3">
+      Your browser does not support HTML5 audio.
+    </audio>
+    <p><a href="<%= @episode.media %>">(download)</a></p>
+  </div>
 
-<div class="episode-details">
-  <%= @episode.title %><br />
-  <%= link_to @episode.podcast.title, podcast_path(@episode.podcast) %><br />
-  <%= @episode.podcast.author %><br />
-  <%= @episode.published_at.present? ? @episode.published_at.strftime("%F") : "" %><br />
-  <%= @episode.media_length.present? ? Time.at(@episode.media_length).utc.strftime("%l:%M:%S") : "" %><br />
+  <div class="episode-body">
+    <%= markdown(@episode.body) %>
+  </div>
+
+  <div class="episode-details">
+    <%= @episode.title %><br />
+    <%= link_to @episode.podcast.title, podcast_path(@episode.podcast) %><br />
+    <%= @episode.podcast.author %><br />
+    <%= @episode.published_at.present? ? @episode.published_at.strftime("%F") : "" %><br />
+    <%= @episode.media_length.present? ? Time.at(@episode.media_length).utc.strftime("%l:%M:%S") : "" %><br />
+  </div>
+
 </div>
 
 <% content_for :title do %>
