@@ -1,7 +1,8 @@
 <% @podcasts.each do |podcast| %>
-  <article>
-    <div><%= cl_image_tag(podcast.image, :alt => "Sample Image", :width => 180, :height => 180, :crop => :fill) %></div>
-    <div>
+  <article class="podcast">
+    <div class="artwork"><a href="<%= podcast_path(podcast) %>"><%= cl_image_tag(podcast.image, :alt => podcast.title, :width => 220, :height => 220, :crop => :fill) %></a>
+    </div>
+    <div class="description">
       <h3><%= link_to podcast.title, podcast_path(podcast) %></h3>
       <p><%= podcast.body %></p>
     </div>
@@ -10,5 +11,5 @@
 <% end %>
 
 <% content_for :title do %>
-  brick.media
+  <%= Brick::SITENAME %>
 <% end %>

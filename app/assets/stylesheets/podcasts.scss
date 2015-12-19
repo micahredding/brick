@@ -46,6 +46,27 @@
   }
 }
 
+article.podcast {
+  @include outer-container;
+  .artwork {
+    @include span-columns(4);
+    @include media($large-screen-up) {
+      @include span-columns(2);
+    }
+    img {
+      height: auto;
+      margin: 0 1em 1em 0;
+      max-width: 100%;
+    }
+  }
+  .details {
+    @include span-columns(4);
+    @include media($large-screen-up) {
+      @include span-columns(10);
+    }
+  }
+}
+
 
 .episode-list {
   list-style: none;

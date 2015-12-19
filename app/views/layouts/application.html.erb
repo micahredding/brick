@@ -40,13 +40,11 @@
     <div class="inner">
       <%= cl_image_tag(@podcast.image, :alt => "Sample Image", :width => 200, :height => 200, :crop => :fill) %>
       <div class="title"><%= link_to @podcast.title, podcast_path(@podcast) %></div>
-      <div class="body">
-        <%= @podcast.body %>
-      </div>
+      <div class="body"><%= @podcast.body %></div>
       <ul class="podcast-links">
         <li><%= link_to "RSS", podcast_url(@podcast, :format => :rss) %></li>
-        <li><a href="">iTunes</a></li>
-        <li><a href="">Email</a></li>
+        <li><%= link_to "subscribe in iTunes", podcast.itunes %></li>
+        <li><%= link_to "subscribe by Email", podcast.email %></li>
       </ul>
     </div>
   </div>

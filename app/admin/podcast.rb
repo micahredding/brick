@@ -3,7 +3,7 @@ ActiveAdmin.register Podcast do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :path, :title, :body, :image, :author, :keywords, :category_ids => []
+permit_params :path, :title, :body, :image, :author, :keywords, :itunes, :email, :category_ids => []
 #
 # or
 #
@@ -29,6 +29,8 @@ permit_params :path, :title, :body, :image, :author, :keywords, :category_ids =>
       f.input :author
       f.input :keywords
       f.input :categories, :as => :check_boxes
+      f.input :itunes
+      f.input :email
     end
     f.actions
   end
@@ -44,6 +46,8 @@ permit_params :path, :title, :body, :image, :author, :keywords, :category_ids =>
       row :categories do |podcast|
         podcast.categories.map {|c| c.nice_name}
       end
+      row :itunes
+      row :email
     end
 
     table_for podcast.episodes do
