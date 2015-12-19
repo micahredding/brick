@@ -29,8 +29,8 @@ permit_params :path, :title, :body, :image, :author, :keywords, :itunes, :email,
       f.input :author
       f.input :keywords
       f.input :categories, :as => :check_boxes
-      f.input :itunes
-      f.input :email
+      # f.input :itunes
+      # f.input :email
     end
     f.actions
   end
