@@ -12,7 +12,7 @@
 </div>
 
 <div class="episode-body">
-  <%= @episode.body %>
+  <%= markdown.render(@episode.body) %>
 </div>
 
 <div class="episode-details">
