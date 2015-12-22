@@ -25,7 +25,7 @@ permit_params :path, :title, :body, :image, :author, :keywords, :itunes, :email,
       f.input :path
       f.input :title
       f.input :body
-      f.input :image
+      f.input :image, :as => :cloudinary_image_upload
       f.input :author
       f.input :keywords
       f.input :categories, :as => :check_boxes
