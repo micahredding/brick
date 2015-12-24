@@ -20,7 +20,7 @@ Dir[File.join(Rails.root, 'db', 'seeds', 'christianity', '*.rb')].sort.each { |s
 Dir[File.join(Rails.root, 'db', 'seeds', 'singularity', '*.rb')].sort.each { |seed| load seed }
 Dir[File.join(Rails.root, 'db', 'seeds', 'abstraction', '*.rb')].sort.each { |seed| load seed }
 
-Podcast.create(
+p = Podcast.create(
   :title => "The Christian Transhumanist Podcast",
   :path => "christiantranshumanist",
   :body => "Micah Redding and Amy Gaskin explore Christianity and Transhumanism, diving deep into the relationship between religion, technology, and the future of the human race.",
@@ -31,7 +31,9 @@ Podcast.create(
   :email => "http://eepurl.com/bqluFf",
   :itunes => "https://itunes.apple.com/us/podcast/christian-transhumanist-podcast/id1053762042",
 )
-Podcast.create(
+p.update_column(:image, "http://res.cloudinary.com/micahredding/image/upload/v1450932294/ds5vpgof4iw00mu357ng.jpg")
+
+p = Podcast.create(
   :title => "Startup Sequence",
   :path => "startup",
   :body => "Demystifying tech decision-making! Two developers and a human being discuss the difficult world of technology, business, and building software that matters.",
@@ -42,7 +44,9 @@ Podcast.create(
   :email => "http://micahredding.us4.list-manage1.com/subscribe?u=c9e24ff2e309d9d4edb919a40&id=5d58b45aad",
   :itunes => "",
 )
-Podcast.create(
+p.update_column(:image, "http://res.cloudinary.com/micahredding/image/upload/v1450933305/yhhxekdscyjwgjqkehpq.jpg")
+
+p = Podcast.create(
   :title => "Christianity on the Curve",
   :path => "christianity",
   :body => "Demystifying tech decision-making! Two developers and a human being discuss the difficult world of technology, business, and building software that matters.",
@@ -53,7 +57,9 @@ Podcast.create(
   :email => "",
   :itunes => "http://itunes.apple.com/us/podcast/christianity-on-the-curve/id495669260",
 )
-Podcast.create(
+p.update_column(:image, "http://res.cloudinary.com/micahredding/image/upload/v1450933340/abnehsblb1ykclxoetmq.jpg")
+
+p = Podcast.create(
   :title => "The Podcast of Unnecessary Abstraction(s)",
   :path => "abstraction",
   :body => "An ascending rampage up the tower of abstraction(s). Obfuscation, paradox, and irony are the hallmarks of this pedantic exploration of intellectual pretension.",
@@ -64,7 +70,9 @@ Podcast.create(
   :email => "",
   :itunes => "https://itunes.apple.com/us/podcast/brickcaster-abstraction/id572915904",
 )
-Podcast.create(
+p.update_column(:image, "http://res.cloudinary.com/micahredding/image/upload/v1450933275/lyoagtsbyvho6qzvhzig.jpg")
+
+p = Podcast.create(
   :title => "Broadcast From The Singularity",
   :path => "singularity",
   :body => "Micah, Ryan, John Yates, and friends discuss wild-eyed ideas about the future. With unique guests, they delve into life in the age of constantly accelerating change, and what that means for technology, culture, and the future of the world.",
@@ -75,3 +83,4 @@ Podcast.create(
   :email => "",
   :itunes => "http://itunes.apple.com/us/podcast/broadcast-the-singularity/id495667410",
 )
+p.update_column(:image, "http://res.cloudinary.com/micahredding/image/upload/v1450933261/aaiu8a5e074tmetavedg.jpg")
