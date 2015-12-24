@@ -1,6 +1,6 @@
 <% @podcasts.each do |podcast| %>
   <article class="podcast">
-    <div class="artwork"><a href="<%= podcast_path(podcast) %>"><%= cl_image_tag(podcast.image, :alt => podcast.title, :width => 220, :height => 220, :crop => :fill) %></a>
+    <div class="artwork"><a href="<%= podcast_path(podcast) %>"><%= cl_image_tag(podcast.image, :alt => podcast.title, :width => 220, :height => 220) %></a>
     </div>
     <div class="description">
       <h3><%= link_to podcast.title, podcast_path(podcast) %></h3>

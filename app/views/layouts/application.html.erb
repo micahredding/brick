@@ -38,7 +38,7 @@
 <% if @podcast %>
   <div id="podcast">
     <div class="inner">
-      <%= cl_image_tag(@podcast.image, :alt => "Sample Image", :width => 200, :height => 200, :crop => :fill) %>
+      <%= cl_image_tag(@podcast.image, :alt => @podcast.title, :width => 220, :height => 220) %>
       <div class="title"><%= link_to @podcast.title, podcast_path(@podcast) %></div>
       <div class="body"><%= @podcast.body %></div>
       <ul class="podcast-links">
