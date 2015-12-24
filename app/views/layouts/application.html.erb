@@ -21,9 +21,9 @@
 <header class="navigation" role="banner">
   <div class="inner">
     <nav role="navigation" class="navigation">
-      <a href="/" class="site-name"><%= Brick::SITENAME %></a>
+      <a href="/" class="site-name"><%= Brick::SITENAME %><% if @podcast %> &gt; <% end %></a>
       <% if @podcast %>
-        &gt; <a href="<%= podcast_path(@podcast) %>" class="podcast-name"><%= @podcast.title %></a>
+        <a href="<%= podcast_path(@podcast) %>" class="podcast-name"><%= @podcast.title %></a>
       <% end %>
     </nav>
 

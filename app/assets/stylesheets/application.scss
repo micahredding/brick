@@ -5,8 +5,6 @@
 @import 'navigation';
 @import 'podcasts';
 @import 'episodes';
-@import 'mediaelement_rails/mediaelementplayer';
-@import 'mediaelement_rails/mejs-skins';
 
 html, body {
   padding: 0;
@@ -23,11 +21,27 @@ html, body {
 }
 
 #audio-player {
-  margin: 1em 0;
-  p {
-    margin: 1em 0;
+  // margin: 1em 0;
+  // p {
+  //   margin: 1em 0;
+  // }
+}
+.audiojs {
+  width: 100%;
+  .play-pause {
+    width: auto;
+  }
+  .scrubber {
+    width: 45%;
+    @include media($medium-screen-up) {
+      width: 65%;
+    }
+    @include media($large-screen-up) {
+      width: 75%;
+    }
   }
 }
+
 
 ul.category-list {
   li {

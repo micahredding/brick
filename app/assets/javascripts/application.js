@@ -13,9 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require mediaelement_rails
+//= require audiojs
 //= require_tree .
 
-$(document).ready(function(){
-  $('audio').mediaelementplayer();
-})
+audiojs.events.ready(function() {
+  var as = audiojs.createAll();
+});

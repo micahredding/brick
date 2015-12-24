@@ -4,7 +4,7 @@ class PodcastsController < ApplicationController
   # GET /podcasts
   # GET /podcasts.json
   def index
-    @podcasts = Podcast.all
+    @podcasts = Podcast.where(:public => true)
   end
 
   # GET /podcasts/1
