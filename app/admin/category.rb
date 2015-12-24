@@ -3,7 +3,7 @@ ActiveAdmin.register Category do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :title, :subtitle
+permit_params :title, :subtitle, :podcast_ids => [], :category_podcast_association_ids => []
 #
 # or
 #
@@ -13,5 +13,6 @@ permit_params :title, :subtitle
 #   permitted
 # end
 
+  filter :title
 
 end

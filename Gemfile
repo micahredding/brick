@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'builder'
 gem 'redcarpet'
 
+gem 'carrierwave'
 gem 'cloudinary'
 gem 'bourbon'
 gem 'neat'

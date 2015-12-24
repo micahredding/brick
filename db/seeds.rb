@@ -27,7 +27,9 @@ Podcast.create(
   :author => "Micah Redding & Amy Gaskin",
   :keywords => "christianity,transhumanism,transhumanist,singularity,technology,theology",
   :categories => [christianity, philosophy, technology],
-  :episodes => [@ct1, @ct2, @ct3, @ct4, @ct5, @ct6, @ct7, @ct8, @ct9, @ct10, @ct11]
+  :episodes => [@ct1, @ct2, @ct3, @ct4, @ct5, @ct6, @ct7, @ct8, @ct9, @ct10, @ct11],
+  :email => "http://eepurl.com/bqluFf",
+  :itunes => "https://itunes.apple.com/us/podcast/christian-transhumanist-podcast/id1053762042",
 )
 Podcast.create(
   :title => "Startup Sequence",
@@ -36,7 +38,9 @@ Podcast.create(
   :author => "Micah Redding & Ann Howard",
   :keywords => "technology,startup,business,development",
   :categories => [technology, business],
-  :episodes => [@s1, @s2, @s3]
+  :episodes => [@s1, @s2, @s3],
+  :email => "http://micahredding.us4.list-manage1.com/subscribe?u=c9e24ff2e309d9d4edb919a40&id=5d58b45aad",
+  :itunes => "",
 )
 Podcast.create(
   :title => "Christianity on the Curve",
@@ -45,7 +49,9 @@ Podcast.create(
   :author => "Micah Redding & Ryan Hogan",
   :keywords => "technology,startup,business,development",
   :categories => [technology, business],
-  :episodes => [@c1, @c2]
+  :episodes => [@c1, @c2],
+  :email => "",
+  :itunes => "http://itunes.apple.com/us/podcast/christianity-on-the-curve/id495669260",
 )
 Podcast.create(
   :title => "The Podcast of Unnecessary Abstraction(s)",
@@ -54,7 +60,9 @@ Podcast.create(
   :author => "Micah Redding & Ryan Hogan",
   :keywords => "pedantic,irony,intellectual,pseudo,intellectual,Schrodinger,Epimenides,Paradox",
   :categories => [philosophy, comedy],
-  :episodes => [@a1, @a2, @a3, @a4, @a5, @a6, @a7, @a8, @a9, @a10, @a11, @a12, @a13]
+  :episodes => [@a1, @a2, @a3, @a4, @a5, @a6, @a7, @a8, @a9, @a10, @a11, @a12, @a13],
+  :email => "",
+  :itunes => "https://itunes.apple.com/us/podcast/brickcaster-abstraction/id572915904",
 )
 Podcast.create(
   :title => "Broadcast From The Singularity",
@@ -63,5 +71,7 @@ Podcast.create(
   :author => "Micah Redding, Ryan Hogan & John Yates",
   :keywords => "singularity,technology,transhuman,transhumanism,kurzweil,artificial,intelligence,technium,kevin,kelly",
   :categories => [technology, philosophy],
-  :episodes => [@bp1, @bp2, @bp3, @b1, @b2, @b3, @b4, @b5, @b6, @b7, @b8, @b9, @b10]
+  :episodes => [@bp1, @bp2, @bp3, @b1, @b2, @b3, @b4, @b5, @b6, @b7, @b8, @b9, @b10],
+  :email => "",
+  :itunes => "http://itunes.apple.com/us/podcast/broadcast-the-singularity/id495667410",
 )

@@ -1,4 +1,6 @@
 class Podcast < ActiveRecord::Base
+  has_many :category_podcast_associations
+  has_many :categories, through: :category_podcast_associations
   has_many :episodes
-  has_and_belongs_to_many :categories
+  mount_uploader :image, ImageUploader
 end
