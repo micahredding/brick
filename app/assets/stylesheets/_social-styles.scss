@@ -1,0 +1,39 @@
+@import 'reset';
+
+img, embed, object, video {max-width: 100%;}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box; /* Safari <= 5*/
+     -moz-box-sizing: border-box; /* Firefox <= 19*/
+          box-sizing: border-box;
+}
+
+.social-sharing {
+
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    
+    width: 60px;
+    
+    caption {
+        text-align: center;
+        background-color: #eeeeee;
+        color: #000;
+        padding: .5em 0;
+    }
+    
+    a {
+        display: block;
+        
+        img {
+            width: 60px;
+            vertical-align: middle;
+        }
+    }
+    
+    a:hover {
+        opacity: .7;
+    }
+}

@@ -13,6 +13,7 @@
   <meta property="og:image" content="<%= yield :social_image %>">
   <meta property="og:site_name" content="brick.media: small podcasts from the human edge">
   <meta property="og:description" content="<%= yield :social_description %>">
+    
 </head>
 <body>
 
@@ -33,8 +34,33 @@
       <li><a href="https://plus.google.com/107355867909504468216" rel="publisher"><i class="icon-google-plus"></i></a></li>
     </ul>
   </div>
-</header>
-
+</header> 
+    
+    <table class="social-sharing">
+        <caption>Share</caption>
+        <tr>
+            <td>
+                <a href="https://twitter.com/home?status=<%= request.base_url %>">
+                    <img src="http://s9.postimg.org/9lptzzutn/twitter.png" alt="Twitter link" />
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.base_url %>">
+                    <img src="http://s9.postimg.org/wboysze17/facebook.png" alt="Facebook link" />
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="https://plus.google.com/share?url=<%= request.base_url %>">
+                    <img src="http://s9.postimg.org/c1n203nij/google.png" alt="Google Plus link" />
+                </a>
+            </td>
+        </tr>
+    </table>
+    
 <% if @podcast %>
   <div id="podcast">
     <div class="inner">
