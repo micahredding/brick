@@ -4,10 +4,10 @@ class Episode < ActiveRecord::Base
   default_scope { order('published_at DESC') }
 
   def summary
-    body ? body.truncate(255) : ""
+    ApplicationController.helpers.teaser(body)
   end
 
   def url
-    "http://localhost:3000/#{podcast.path}/#{number}"
+    "http://brickcaster.com/#{podcast.path}/#{number}"
   end
 end
