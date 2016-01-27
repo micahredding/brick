@@ -4,7 +4,7 @@ class PodcastsController < ApplicationController
   # GET /podcasts
   # GET /podcasts.json
   def index
-    @podcasts = Podcast.where(:public => true).order(:updated_at)
+    @podcasts = Podcast.where(:public => true).order(:updated_at => :desc)
   end
 
   # GET /podcasts/1
