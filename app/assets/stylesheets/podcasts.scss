@@ -94,3 +94,14 @@ section#podcast-header {
     }
   }
 }
+
+.podcast-footer {
+  background: #EEEEEE;
+  .inner {
+    @include outer-container;
+    padding: 2em 1em;
+    @include media($large-screen-up) {
+      padding: 2em 0;
+    }
+  }
+}

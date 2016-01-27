@@ -12,6 +12,7 @@ img, embed, object, video {max-width: 100%;}
     position: fixed;
     bottom: 0;
     right: 0;
+    z-index: 1000;
 
     a {
         display: inline-block;
