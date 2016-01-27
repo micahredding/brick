@@ -13,7 +13,7 @@
   <meta property="og:image" content="<%= yield :social_image %>">
   <meta property="og:site_name" content="brick.media: small podcasts from the human edge">
   <meta property="og:description" content="<%= yield :social_description %>">
-    
+
 </head>
 <body>
 
@@ -34,46 +34,18 @@
       <li><a href="https://plus.google.com/107355867909504468216" rel="publisher"><i class="icon-google-plus"></i></a></li>
     </ul>
   </div>
-</header> 
-    
-<table class="social-sharing">
-    <caption>Share</caption>
-    <tr>
-        <td>
-            <a href="https://twitter.com/home?status=<%= request.base_url %>">
-                <img src="http://s9.postimg.org/9lptzzutn/twitter.png" alt="Twitter link" />
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.base_url %>">
-                <img src="http://s9.postimg.org/wboysze17/facebook.png" alt="Facebook link" />
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <a href="https://plus.google.com/share?url=<%= request.base_url %>">
-                <img src="http://s9.postimg.org/c1n203nij/google.png" alt="Google Plus link" />
-            </a>
-        </td>
-    </tr>
-</table>
-    
+</header>
+
+<section class="social-sharing">
+
+  <a href="https://twitter.com/home?status=<%= request.base_url %>"><img src="http://s9.postimg.org/9lptzzutn/twitter.png" alt="Twitter link" /></a><a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.base_url %>"><img src="http://s9.postimg.org/wboysze17/facebook.png" alt="Facebook link" /></a><a href="https://plus.google.com/share?url=<%= request.base_url %>"><img src="http://s9.postimg.org/c1n203nij/google.png" alt="Google Plus link" /></a>
+
+</section>
+
 <% if @podcast %>
-  <div id="podcast">
-    <div class="inner">
-      <%= cl_image_tag(@podcast.image, :alt => @podcast.title, :width => 220, :height => 220, :crop => :scale) %>
-      <div class="title"><%= link_to @podcast.title, podcast_path(@podcast) %></div>
-      <div class="body"><%= @podcast.body %></div>
-      <ul class="podcast-links">
-        <li><%= link_to "RSS", podcast_url(@podcast, :format => :rss) %></li>
-        <% if @podcast.itunes.present? %><li><%= link_to "Subscribe in iTunes", @podcast.itunes %></li><% end %>
-        <% if @podcast.email.present?  %><li><%= link_to "Subscribe by Email", @podcast.email %></li><% end %>
-      </ul>
-    </div>
-  </div>
+  <section id="podcast-header">
+    <%= render :partial => "podcasts/header", :locals => {:podcast => @podcast} %>
+  </section>
 <% end %>
 
 <div id="content">

@@ -13,9 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require audiojs
 //= require_tree .
 
-audiojs.events.ready(function() {
-  var as = audiojs.createAll();
-});

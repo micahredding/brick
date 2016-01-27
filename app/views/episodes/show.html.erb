@@ -5,10 +5,10 @@
   </h1>
 
   <div id="audio-player">
-    <audio style="width: 100%;">
+    <audio controls="controls">
       <source src="<%= @episode.media %>" type="audio/mpeg">
       <source src="<%= @episode.media %>" type="audio/mp3">
-      Your browser does not support HTML5 audio.
+      <p>Your browser does not support HTML5 audio, but you can <a href="<%= @episode.media %>">(download)</a> this episode!</p>
     </audio>
     <p><a href="<%= @episode.media %>">(download)</a></p>
   </div>

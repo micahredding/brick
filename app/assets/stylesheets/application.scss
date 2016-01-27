@@ -15,9 +15,11 @@ html, body {
 
 #content {
   @include outer-container;
-  padding: 2em 1em;
-  @include media($xtra-large-screen-up) {
-    padding: 2em 0;
+  .episode, .episode-list {
+    padding: 1em 1em;
+    @include media($xtra-large-screen-up) {
+      padding: 2em 0;
+    }
   }
 }
 
@@ -26,22 +28,25 @@ html, body {
   // p {
   //   margin: 1em 0;
   // }
-}
-.audiojs {
-  width: 100%;
-  .play-pause {
-    width: auto;
-  }
-  .scrubber {
-    width: 45%;
-    @include media($medium-screen-up) {
-      width: 65%;
-    }
-    @include media($large-screen-up) {
-      width: 75%;
-    }
+  audio {
+    margin: 1em 0 1em;
   }
 }
+// .audiojs {
+//   width: 100%;
+//   .play-pause {
+//     width: auto;
+//   }
+//   .scrubber {
+//     width: 45%;
+//     @include media($medium-screen-up) {
+//       width: 65%;
+//     }
+//     @include media($large-screen-up) {
+//       width: 75%;
+//     }
+//   }
+// }
 
 
 ul.category-list {

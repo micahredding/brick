@@ -33,7 +33,7 @@ gem 'bitters'
 gem 'bootstrap', '~> 4.0.0.alpha.2'
 # gem 'mediaelement_rails'
 # gem 'audiojs'
-gem 'audiojs-rails'
+# gem 'audiojs-rails'
 
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'

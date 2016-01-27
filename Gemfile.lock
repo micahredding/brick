@@ -57,8 +57,6 @@ GEM
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.3)
-    audiojs-rails (1.0.1)
-      railties (>= 3.1)
     autoprefixer-rails (6.1.2)
       execjs
       json
@@ -241,7 +239,6 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
-  audiojs-rails
   bitters
   bootstrap (~> 4.0.0.alpha.2)
   bourbon
