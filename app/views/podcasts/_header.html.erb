@@ -1,0 +1,12 @@
+<div class="podcast-header">
+  <div class="inner">
+    <%= cl_image_tag(podcast.image, :alt => podcast.title, :width => 220, :height => 220, :crop => :scale) %>
+    <div class="title"><%= link_to podcast.title, podcast_path(podcast) %></div>
+    <div class="body"><%= podcast.body %></div>
+    <ul class="podcast-links">
+      <li><%= link_to "RSS", podcast_url(podcast, :format => :rss) %></li>
+      <% if podcast.itunes.present? %><li><%= link_to "Subscribe in iTunes", podcast.itunes %></li><% end %>
+      <% if podcast.email.present?  %><li><%= link_to "Subscribe by Email", podcast.email %></li><% end %>
+    </ul>
+  </div>
+</div>
