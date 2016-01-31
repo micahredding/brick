@@ -59,7 +59,7 @@ xml.rss :version => "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast
 
         # episode meta
         xml.pubDate episode.published_at.to_formatted_s(:rfc822)
-        xml.itunes :duration, episode.media_length
+        xml.itunes :duration, Time.at(episode.media_length).utc.strftime("%H:%M:%S")
 
         # podcast meta
         xml.itunes :author,  @podcast.author || 'Micah Redding'
