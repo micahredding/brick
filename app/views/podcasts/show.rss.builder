@@ -63,7 +63,7 @@ xml.rss :version => "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast
 
         # podcast meta
         xml.itunes :author,  @podcast.author || 'Micah Redding'
-        xml.itunes :image, :href => @podcast.image
+        xml.itunes :image, :href => episode.override_image
         xml.itunes :keywords, @podcast.keywords
       end
     end

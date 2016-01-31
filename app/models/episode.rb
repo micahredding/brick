@@ -1,5 +1,6 @@
 class Episode < ActiveRecord::Base
   belongs_to :podcast
+  mount_uploader :image, ImageUploader
 
   default_scope { order('published_at DESC') }
 
@@ -9,5 +10,9 @@ class Episode < ActiveRecord::Base
 
   def url
     "http://brickcaster.com/#{podcast.path}/#{number}"
+  end
+
+  def override_image
+    image.present? ? image : podcast.image
   end
 end
