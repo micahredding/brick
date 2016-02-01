@@ -36,7 +36,7 @@ gem 'ruby-mp3info'
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'protected_attributes'
-
+gem "administrate"
 
 
 # Use ActiveModel has_secure_password
