@@ -19,7 +19,7 @@ permit_params :podcast_id, :number, :title, :body, :recorded_at, :published_at, 
   end
 
   action_item :view, only: [:show, :edit] do
-    link_to 'View on site', episode_path(resource)
+    link_to 'View on site', episode_show_path(resource)
   end
 
   index do
