@@ -18,6 +18,10 @@ permit_params :podcast_id, :number, :title, :body, :recorded_at, :published_at, 
     redirect_to resource_path, notice: "Media size and length loaded!"
   end
 
+  action_item :view, only: [:show, :edit] do
+    link_to 'View on site', episode_path(resource)
+  end
+
   index do
     column :podcast
     column :number
