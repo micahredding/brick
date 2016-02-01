@@ -9,11 +9,12 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <link href="https://plus.google.com/107355867909504468216" rel="publisher">
 
-  <meta property="og:title" content="<%= yield :title %>">
-  <meta property="og:image" content="<%= yield :social_image %>">
-  <meta property="og:site_name" content="brick.media: small podcasts from the human edge">
+  <meta property="og:title"       content="<%= yield :title %>">
+  <meta property="og:image"       content="<%= yield :social_image %>">
+  <meta property="og:site_name"   content="brickcaster: small podcasts from the human edge">
   <meta property="og:description" content="<%= yield :social_description %>">
-
+  <meta property="og:url"         content="<%= request.original_url %>">
+  <meta property="fb:admins"      content="510967360">
 </head>
 <body>
 
