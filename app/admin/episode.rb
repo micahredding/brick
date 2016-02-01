@@ -39,7 +39,7 @@ permit_params :podcast_id, :number, :title, :body, :recorded_at, :published_at, 
         f.input :media_length
         f.input :media_size
         li "<p><a href='?check_remote_values=true'>Check media values</a></p>".html_safe
-        li ("<p>#{link_to("Load and overwrite media values", load_media_values_admin_episode_path(f.object), :method => :put)}</p>").html_safe
+        li ("<p>#{link_to("Load and overwrite media values", load_media_values_admin_episode_path(f.object), :method => :put)}</p>").html_safe if f.object.id
         li "<p>Length: #{f.object.mp3_length}</p>".html_safe if params[:check_remote_values]
         li "<p>Size: #{f.object.mp3_size}</p>".html_safe     if params[:check_remote_values]
       end
