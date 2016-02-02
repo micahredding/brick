@@ -281,7 +281,6 @@ DEPENDENCIES
   pg
   protected_attributes
   rails (= 4.2.5)
-  rake
   redcarpet
   ruby-mp3info
   sass-rails (~> 5.0)
