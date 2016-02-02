@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151224055922) do
+ActiveRecord::Schema.define(version: 20160201232648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,9 +73,10 @@ ActiveRecord::Schema.define(version: 20151224055922) do
     t.integer  "media_length"
     t.integer  "media_size"
     t.integer  "podcast_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.text     "summary"
+    t.boolean  "published",    default: true
   end
 
   add_index "episodes", ["podcast_id"], name: "index_episodes_on_podcast_id", using: :btree

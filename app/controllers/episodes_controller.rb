@@ -1,74 +1,22 @@
 class EpisodesController < ApplicationController
-  before_action :set_episode, only: [:show, :edit, :update, :destroy]
+  before_action :set_episode, only: [:show]
 
-  # GET /episodes/1
-  # GET /episodes/1.json
+  # GET /podcast_path/episode_number
+  # GET /podcast_path/episode_number.json
   def show
-  end
-
-  # GET /episodes/new
-  def new
-    @episode = Episode.new
-  end
-
-  # GET /episodes/1/edit
-  def edit
-  end
-
-  # POST /episodes
-  # POST /episodes.json
-  def create
-    @episode = Episode.new(episode_params)
-
-    respond_to do |format|
-      if @episode.save
-        format.html { redirect_to @episode, notice: 'Episode was successfully created.' }
-        format.json { render :show, status: :created, location: @episode }
-      else
-        format.html { render :new }
-        format.json { render json: @episode.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /episodes/1
-  # PATCH/PUT /episodes/1.json
-  def update
-    respond_to do |format|
-      if @episode.update(episode_params)
-        format.html { redirect_to @episode, notice: 'Episode was successfully updated.' }
-        format.json { render :show, status: :ok, location: @episode }
-      else
-        format.html { render :edit }
-        format.json { render json: @episode.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /episodes/1
-  # DELETE /episodes/1.json
-  def destroy
-    @episode.destroy
-    respond_to do |format|
-      format.html { redirect_to episodes_url, notice: 'Episode was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to(root_path) and return unless @podcast.present?
+    redirect_to(podcast_path(@podcast.path)) and return unless @episode.present?
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_episode
-      if params[:id]
-        @episode = Episode.find(params[:id])
-        @podcast = @episode.podcast
-      elsif params[:podcast_path] && params[:episode_number]
-        @podcast = Podcast.find_by_path(params[:podcast_path])
-        @episode = Episode.where(:podcast_id => @podcast.id, :number => params[:episode_number]).first
-      end
+      @podcast = Podcast.find_by_path(params[:podcast_path]) if params[:podcast_path]
+      @episode = @podcast.episode(params[:episode_number]) if @podcast.present? && params[:episode_number]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def episode_params
-      params.require(:episode).permit(:number, :title, :body, :recorded_at, :published_at, :image, :media, :media_length, :media_size, :podcast_id)
-    end
+    # def episode_params
+    #   params.require(:episode).permit(:number, :title, :body, :recorded_at, :published_at, :image, :media, :media_length, :media_size, :podcast_id)
+    # end
 end

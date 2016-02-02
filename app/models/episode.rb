@@ -8,11 +8,11 @@ class Episode < ActiveRecord::Base
   belongs_to :podcast
   mount_uploader :image, ImageUploader
 
-  default_scope { order('published_at DESC') }
+  default_scope  { order(:published_at => :desc) }
 
-  def url
-    "http://brickcaster.com/#{podcast.path}/#{number}"
-  end
+  scope(:published, lambda {
+    where(:published => true)
+  })
 
   def override_summary
     summary.present? ? summary : ApplicationController.helpers.teaser(body)

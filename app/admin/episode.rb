@@ -3,7 +3,7 @@ ActiveAdmin.register Episode do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :podcast_id, :number, :title, :body, :recorded_at, :published_at, :image, :media, :media_length, :media_size, :summary
+permit_params :podcast_id, :number, :title, :body, :recorded_at, :published_at, :image, :media, :media_length, :media_size, :summary, :published
 #
 # or
 #
@@ -19,7 +19,7 @@ permit_params :podcast_id, :number, :title, :body, :recorded_at, :published_at, 
   end
 
   action_item :view, only: [:show, :edit] do
-    link_to 'View on site', episode_show_path(resource.podcast.path, resource.number)
+    link_to 'View on site', "/#{episode.podcast.path}/#{episode.number}" if episode.published?
   end
 
   index do
@@ -34,9 +34,11 @@ permit_params :podcast_id, :number, :title, :body, :recorded_at, :published_at, 
       f.input :podcast
       f.input :number
       f.input :title
+      f.input :summary, :input_html => {:rows => 3}
       f.input :body
       f.input :recorded_at
       f.input :published_at
+      f.input :published
       f.input :image, :as => :cloudinary_image_upload
       f.inputs "Media Wrapper" do
         f.input :media
@@ -47,7 +49,6 @@ permit_params :podcast_id, :number, :title, :body, :recorded_at, :published_at, 
         li "<p>Length: #{f.object.mp3_length}</p>".html_safe if params[:check_remote_values]
         li "<p>Size: #{f.object.mp3_size}</p>".html_safe     if params[:check_remote_values]
       end
-      f.input :summary
     end
     f.actions
   end

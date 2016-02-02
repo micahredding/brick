@@ -1,6 +1,6 @@
 <ul class="episode-list">
-  <% @podcast.episodes.each do |episode| %>
-    <li class="episode-link"><%= link_to episode.title, episode_show_path(episode.podcast.path, episode.number) %></li>
+  <% @episodes.each do |episode| %>
+    <li class="episode-link"><%= link_to episode.title, episode_path(episode) %></li>
   <% end %>
 </ul>
 

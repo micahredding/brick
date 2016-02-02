@@ -1,11 +1,11 @@
 xml.instruct! :xml, :version => "1.0"
 xml.rss :version => "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd", "xmlns:atom" => "http://www.w3.org/2005/Atom", "xmlns:content"=>"http://purl.org/rss/1.0/modules/content/" do
   xml.channel do
-    xml.atom :link, :href => podcast_show_url(@podcast.path, :format => :rss), :rel => "self", :type => "application/rss+xml"
+    xml.atom :link, :href => podcast_url(@podcast, :format => :rss), :rel => "self", :type => "application/rss+xml"
 
     # id
-    xml.link podcast_show_url(@podcast.path)
-    xml.itunes :'new-feed-url', podcast_show_url(@podcast.path, :format => :rss)
+    xml.link podcast_url(@podcast)
+    xml.itunes :'new-feed-url', podcast_url(@podcast, :format => :rss)
 
     # title, summary, content
     xml.title @podcast.title
@@ -39,18 +39,16 @@ xml.rss :version => "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast
 
     xml.itunes :explicit, "no"
 
-    episodes = @podcast.episodes
-
-    episodes.each do |episode|
+    @episodes.each do |episode|
       xml.item do
         # id
-        xml.guid episode.url
-        xml.link episode.url
+        xml.guid episode_url(episode)
+        xml.link episode_url(episode)
 
         # title, summary, content
         xml.title episode.title
         xml.itunes :subtitle, episode.override_summary
-        xml.itunes :summary, "#{episode.override_summary} Read our detailed notes: #{episode.url}"
+        xml.itunes :summary, "#{episode.override_summary} Read our detailed notes: #{episode_url(episode)}"
         xml.description episode.override_summary
         xml.content :encoded, markdown(episode.body)
 
