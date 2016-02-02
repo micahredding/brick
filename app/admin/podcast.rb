@@ -12,6 +12,14 @@ permit_params :path, :title, :body, :image, :author, :keywords, :itunes, :email,
 #   permitted
 # end
 
+  action_item :view, only: [:show, :edit] do
+    link_to 'View on site', "/#{podcast.path}" if podcast.public?
+  end
+
+  action_item :view, only: [:show, :edit] do
+    link_to 'New Episode', new_admin_podcast_episode_path(podcast)
+  end
+
   filter :title
 
   index do
@@ -57,7 +65,10 @@ permit_params :path, :title, :body, :image, :author, :keywords, :itunes, :email,
       column :title
       column :body
       column :actions do |episode|
-        link_to 'edit', edit_admin_episode_path(episode)
+        ul do
+          li link_to 'view', admin_podcast_episode_path(podcast, episode)
+          li link_to 'edit', edit_admin_podcast_episode_path(podcast, episode)
+        end
       end
     end
 
