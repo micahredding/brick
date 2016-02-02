@@ -12,8 +12,7 @@ class PodcastsController < ApplicationController
   # GET /podcast_path.json
   # GET /podcast_path.rss
   def show
-    redirect_to(root_path) and return unless @podcast.present?
-    @episodes = @podcast.episodes.published
+    @episodes         = @podcast.episodes.published
     @meta_url         = view_context.podcast_url(@podcast)
     @meta_type        = "article"
     @meta_title       = @podcast.title
@@ -22,6 +21,9 @@ class PodcastsController < ApplicationController
   end
 
   def subscribe_new
+    # if cookies["brickcaster_#{@podcast.path}_subscriber"].present?
+    #   redirect_to podcast_subscribe_error_path(:podcast_path => @podcast.path, :message => "You are already subscribed!") and return
+    # end
     if params[:email].present?
       begin
         subscribe_email(params[:email])
@@ -57,12 +59,14 @@ class PodcastsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_podcast
       @podcast = Podcast.find_by_path(params[:podcast_path]) if params[:podcast_path]
+      redirect_to(root_path) and return unless @podcast.present?
     end
 
     def subscribe_email(email)
       @list_id = @podcast.email.present? ? @podcast.email : "61a457b26b"
       gb = Gibbon::Request.new
       gb.lists(@list_id).members.create(body: {:email_address => email, :status => "subscribed"})
+      cookies.permanent["brickcaster_#{@podcast.path}_subscriber"] = true
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
