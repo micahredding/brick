@@ -38,7 +38,7 @@ permit_params :podcast_id, :number, :title, :body, :recorded_at, :published_at, 
       f.input :body
       f.input :recorded_at
       f.input :published_at
-      f.input :published
+      f.input :published, :as => :boolean
       f.input :image, :as => :cloudinary_image_upload
       f.inputs "Media Wrapper" do
         f.input :media
