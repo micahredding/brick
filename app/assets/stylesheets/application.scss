@@ -15,11 +15,9 @@ html, body {
 
 #content {
   @include outer-container;
-  .episode, .episode-list {
-    padding: 1em 1em;
-    @include media($xtra-large-screen-up) {
-      padding: 2em 0;
-    }
+  padding: 1em 1em;
+  @include media($xtra-large-screen-up) {
+    padding: 2em 0;
   }
 }
 

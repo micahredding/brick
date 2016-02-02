@@ -49,7 +49,7 @@
   <a href="https://twitter.com/intent/tweet?text=<%= u @meta_title %>&url=<%= @meta_url %>"><img src="http://s9.postimg.org/9lptzzutn/twitter.png" alt="Twitter link" /></a><a href="https://www.facebook.com/sharer/sharer.php?u=<%= @meta_url %>"><img src="http://s9.postimg.org/wboysze17/facebook.png" alt="Facebook link" /></a><a href="https://plus.google.com/share?url=<%= @meta_url %>"><img src="http://s9.postimg.org/c1n203nij/google.png" alt="Google Plus link" /></a>
 </section>
 
-<% if @podcast %>
+<% if @podcast && @podcast_show_header != false %>
   <section id="podcast-header">
     <%= render :partial => "podcasts/header", :locals => {:podcast => @podcast} %>
   </section>
@@ -59,32 +59,10 @@
   <%= yield %>
 </div>
 
-<% if @podcast %>
+<% if @podcast && @podcast_show_footer != false %>
   <div class="podcast-footer">
     <div class="inner">
-
-      <!-- Begin MailChimp Signup Form -->
-      <div id="mc_embed_signup">
-        <form action="//micahredding.us4.list-manage.com/subscribe/post?u=c9e24ff2e309d9d4edb919a40&amp;id=61a457b26b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-            <div id="mc_embed_signup_scroll">
-              <h2>Get notified of new episodes of the Christian Transhumanist Podcast!</h2>
-              <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="email address">
-            </div>
-            <div id="mce-responses" class="clear">
-              <div class="response" id="mce-error-response" style="display:none"></div>
-              <div class="response" id="mce-success-response" style="display:none"></div>
-            </div>
-            <div style="position: absolute; left: -5000px;" aria-hidden="true">
-              <input type="text" name="b_c9e24ff2e309d9d4edb919a40_61a457b26b" tabindex="-1" value="">
-            </div>
-            <div class="clear">
-              <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
-            </div>
-        </form>
-      </div>
-      <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
-      <!--End mc_embed_signup-->
-
+      <%= render :partial => "podcasts/subscribe_new", :locals => {:podcast => @podcast} %>
     </div>
   </div>
 <% end %>

@@ -2,8 +2,12 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  get ':podcast_path/:episode_number' => 'episodes#show', :as => :episode
-  get ':podcast_path' => 'podcasts#show', :as => :podcast
+  get  ':podcast_path/subscribe'          => 'podcasts#subscribe_new',     :as => :podcast_subscribe_new
+  post ':podcast_path/subscribe'          => 'podcasts#subscribe_create',  :as => :podcast_subscribe_create
+  get  ':podcast_path/subscribe_success'  => 'podcasts#subscribe_success', :as => :podcast_subscribe_success
+  get  ':podcast_path/subscribe_error'    => 'podcasts#subscribe_error',   :as => :podcast_subscribe_error
+  get  ':podcast_path/:episode_number'    => 'episodes#show',              :as => :episode
+  get  ':podcast_path'                    => 'podcasts#show',              :as => :podcast
 
   root 'podcasts#index'
 

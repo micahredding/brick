@@ -6,7 +6,7 @@
     <ul class="podcast-links">
       <li><%= link_to "RSS", podcast_url(podcast, :format => :rss) %></li>
       <% if podcast.itunes.present? %><li><%= link_to "Subscribe in iTunes", podcast.itunes %></li><% end %>
-      <% if podcast.email.present?  %><li><%= link_to "Subscribe by Email", podcast.email %></li><% end %>
+      <li><%= link_to "Subscribe by Email", podcast_subscribe_new_path(:podcast_path => podcast.path) %></li>
     </ul>
   </div>
 </div>

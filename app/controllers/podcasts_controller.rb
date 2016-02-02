@@ -1,5 +1,5 @@
 class PodcastsController < ApplicationController
-  before_action :set_podcast, only: [:show, :edit, :update, :destroy]
+  before_action :set_podcast, only: [:show, :subscribe_new, :subscribe_create, :subscribe_success, :subscribe_error]
 
   # GET /podcasts
   # GET /podcasts.json
@@ -19,6 +19,32 @@ class PodcastsController < ApplicationController
     @meta_title       = @podcast.title
     @meta_image       = @podcast.image
     @meta_description = @podcast.body
+  end
+
+  def subscribe_new
+    @podcast_show_header = false
+    @podcast_show_footer = false
+  end
+
+  def subscribe_create
+    @list_id = "61a457b26b"
+    gb = Gibbon::Request.new
+    begin
+      gb.lists(@list_id).members.create(body: {:email_address => params[:email][:address], :status => "subscribed"})
+      redirect_to podcast_subscribe_success_path(:podcast_path => @podcast.path) and return
+    rescue Gibbon::MailChimpError => e
+      redirect_to podcast_subscribe_error_path(:podcast_path => @podcast.path, :message => e.message) and return
+    end
+  end
+
+  def subscribe_success
+    @podcast_show_header = false
+    @podcast_show_footer = false
+  end
+
+  def subscribe_error
+    @podcast_show_header = false
+    @podcast_show_footer = false
   end
 
   private
