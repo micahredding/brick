@@ -22,15 +22,21 @@ class PodcastsController < ApplicationController
   end
 
   def subscribe_new
+    if params[:email].present?
+      begin
+        subscribe_email(params[:email])
+        redirect_to podcast_subscribe_success_path(:podcast_path => @podcast.path) and return
+      rescue Gibbon::MailChimpError => e
+        redirect_to podcast_subscribe_error_path(:podcast_path => @podcast.path, :message => e.message) and return
+      end
+    end
     @podcast_show_header = false
     @podcast_show_footer = false
   end
 
   def subscribe_create
-    @list_id = "61a457b26b"
-    gb = Gibbon::Request.new
     begin
-      gb.lists(@list_id).members.create(body: {:email_address => params[:email][:address], :status => "subscribed"})
+      subscribe_email(params[:email][:address])
       redirect_to podcast_subscribe_success_path(:podcast_path => @podcast.path) and return
     rescue Gibbon::MailChimpError => e
       redirect_to podcast_subscribe_error_path(:podcast_path => @podcast.path, :message => e.message) and return
@@ -51,6 +57,12 @@ class PodcastsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_podcast
       @podcast = Podcast.find_by_path(params[:podcast_path]) if params[:podcast_path]
+    end
+
+    def subscribe_email(email)
+      @list_id = "61a457b26b"
+      gb = Gibbon::Request.new
+      gb.lists(@list_id).members.create(body: {:email_address => email, :status => "subscribed"})
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
