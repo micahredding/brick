@@ -60,7 +60,7 @@ class PodcastsController < ApplicationController
     end
 
     def subscribe_email(email)
-      @list_id = "61a457b26b"
+      @list_id = @podcast.email.present? ? @podcast.email : "61a457b26b"
       gb = Gibbon::Request.new
       gb.lists(@list_id).members.create(body: {:email_address => email, :status => "subscribed"})
     end
