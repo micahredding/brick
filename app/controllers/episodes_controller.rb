@@ -6,6 +6,11 @@ class EpisodesController < ApplicationController
   def show
     redirect_to(root_path) and return unless @podcast.present?
     redirect_to(podcast_path(@podcast.path)) and return unless @episode.present?
+    @meta_url         = view_context.episode_url(@episode)
+    @meta_type        = "article"
+    @meta_title       = "#{@episode.title} | #{@podcast.title}"
+    @meta_image       = @episode.override_image
+    @meta_description = @episode.override_summary
   end
 
   private

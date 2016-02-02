@@ -5,6 +5,7 @@ class PodcastsController < ApplicationController
   # GET /podcasts.json
   def index
     @podcasts = Podcast.where(:public => true).order(:updated_at => :desc)
+    @meta_title = Brick::SITETITLE
   end
 
   # GET /podcast_path
@@ -13,6 +14,11 @@ class PodcastsController < ApplicationController
   def show
     redirect_to(root_path) and return unless @podcast.present?
     @episodes = @podcast.episodes.published
+    @meta_url         = view_context.podcast_url(@podcast)
+    @meta_type        = "article"
+    @meta_title       = @podcast.title
+    @meta_image       = @podcast.image
+    @meta_description = @podcast.body
   end
 
   private

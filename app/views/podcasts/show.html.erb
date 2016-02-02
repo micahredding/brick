@@ -4,10 +4,6 @@
   <% end %>
 </ul>
 
-<% content_for :title do %>
-  <%= @podcast.title %>
-<% end %>
-
 <% content_for :header do %>
   <h2><%= link_to Brick::SITENAME, root_path %> &gt; <%= link_to @podcast.title, podcast_path(@podcast) %></h2>
 <% end %>
