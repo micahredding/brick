@@ -63,7 +63,7 @@ permit_params :path, :title, :body, :image, :author, :keywords, :itunes, :email,
     table_for podcast.episodes do
       column :number
       column :title
-      column :body
+      column :summary
       column :actions do |episode|
         ul do
           li link_to 'view', admin_podcast_episode_path(podcast, episode)
