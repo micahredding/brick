@@ -11,15 +11,15 @@
 
   <meta property="og:title"       content="<%= @meta_title %>">
   <meta property="og:image"       content="<%= @meta_image %>">
-  <meta property="og:site_name"   content="brickcaster: small podcasts from the human edge">
+  <meta property="og:site_name"   content="<%= @meta_sitename %>">
   <meta property="og:description" content="<%= @meta_description %>">
   <meta property="og:url"         content="<%= @meta_url %>">
-  <meta property="fb:admins"      content="510967360">
-  <meta property="fb:app_id"      content="1247388721942581">
+  <meta property="fb:admins"      content="<%= @meta_fb_admins %>">
+  <meta property="fb:app_id"      content="<%= @meta_fb_app_id %>">
 
   <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:site"        content="@micahtredding">
-  <meta name="twitter:creator"     content="@micahtredding">
+  <meta name="twitter:site"        content="<%= @meta_twitter_site %>">
+  <meta name="twitter:creator"     content="<%= @meta_twitter_creator %>">
   <meta name="twitter:title"       content="<%= @meta_title %>">
   <meta name="twitter:description" content="<%= @meta_description %>">
   <meta name="twitter:image"       content="<%= @meta_image %>">
@@ -46,9 +46,7 @@
 </header>
 
 <section class="social-sharing">
-
   <a href="https://twitter.com/intent/tweet?text=<%= u @meta_title %>&url=<%= @meta_url %>"><img src="http://s9.postimg.org/9lptzzutn/twitter.png" alt="Twitter link" /></a><a href="https://www.facebook.com/sharer/sharer.php?u=<%= @meta_url %>"><img src="http://s9.postimg.org/wboysze17/facebook.png" alt="Facebook link" /></a><a href="https://plus.google.com/share?url=<%= @meta_url %>"><img src="http://s9.postimg.org/c1n203nij/google.png" alt="Google Plus link" /></a>
-
 </section>
 
 <% if @podcast %>
