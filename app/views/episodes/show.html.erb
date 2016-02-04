@@ -13,9 +13,11 @@
     </div>
   <% end %>
 
-  <div class="episode-body">
-    <%= markdown(@episode.body) %>
-  </div>
+  <% if @episode.body.present? %>
+    <div class="episode-body">
+      <%= markdown(@episode.body) %>
+    </div>
+  <% end %>
 
   <div class="episode-details">
     <%= @episode.title %><br />

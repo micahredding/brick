@@ -64,6 +64,7 @@ permit_params :path, :title, :body, :image, :author, :keywords, :itunes, :email,
       column :number
       column :title
       column :summary
+      column :state
       column :actions do |episode|
         ul do
           li link_to 'view', admin_podcast_episode_path(podcast, episode)
