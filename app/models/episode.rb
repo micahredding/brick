@@ -18,6 +18,14 @@ class Episode < ActiveRecord::Base
     state == "published"
   end
 
+  def preview?
+    state == "preview"
+  end
+
+  def unpublished?
+    state == "unpublished"
+  end
+
   def override_summary
     summary.present? ? summary : ApplicationController.helpers.teaser(body)
   end
