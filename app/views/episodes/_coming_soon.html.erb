@@ -1,0 +1,5 @@
+<h2 class="cta">This episode is coming soon! Subscribe by email, and get it as soon as it comes out!</h2>
+<%= form_tag(podcast_subscribe_create_path(:podcast_path => podcast.path), method: "post", id: "subscribe") do -%>
+   <%= email_field(:email, :address, {id: "email", placeholder: "email address"}) %>
+   <%= submit_tag("Sign me up!") %>
+<% end %>

@@ -2,7 +2,11 @@
 
   <h1><%= @episode.title %></h1>
 
-  <% if @episode.media.present? %>
+  <% if @episode.preview? %>
+    <%= render :partial => "coming_soon", :locals => {:podcast => @episode.podcast} %>
+  <% end %>
+
+  <% if @episode.published? && @episode.media.present? %>
     <div id="audio-player">
       <audio controls="controls">
         <source src="<%= @episode.media %>" type="audio/mpeg">
