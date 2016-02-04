@@ -27,6 +27,7 @@ permit_params :podcast_id, :number, :title, :body, :recorded_at, :published_at, 
     column :podcast
     column :number
     column :title
+    column :state
     actions
   end
 
@@ -40,6 +41,7 @@ permit_params :podcast_id, :number, :title, :body, :recorded_at, :published_at, 
       f.input :recorded_at
       f.input :published_at
       f.input :published, :as => :boolean
+      f.input :state, :as => :select, :collection => [:unpublished, :preview, :published]
       f.input :image, :as => :cloudinary_image_upload
       f.inputs "Media Wrapper" do
         f.input :media

@@ -11,8 +11,12 @@ class Episode < ActiveRecord::Base
   default_scope  { order(:published_at => :desc) }
 
   scope(:published, lambda {
-    where(:published => true)
+    where(:state => :published)
   })
+
+  def published?
+    state == "published"
+  end
 
   def override_summary
     summary.present? ? summary : ApplicationController.helpers.teaser(body)
