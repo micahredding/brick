@@ -5,6 +5,6 @@ class Podcast < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   def episode(number)
-    episodes.published.where(:number => number).first
+    episodes.where(:number => number).first
   end
 end
