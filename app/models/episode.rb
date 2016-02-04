@@ -27,7 +27,9 @@ class Episode < ActiveRecord::Base
   end
 
   def override_summary
-    summary.present? ? summary : ApplicationController.helpers.teaser(body)
+    return summary if summary.present?
+    return ApplicationController.helpers.teaser(body) if body.present?
+    nil
   end
 
   def override_image
