@@ -14,14 +14,29 @@ section#podcast-header {
     @include media($xtra-large-screen-up) {
       padding: 2em 0em;
     }
+    .left {
+      display:inline-block;
+      vertical-align: top;
+      @include media($large-screen-up) {
+        width:24%;
+      }
+    }
+    .right {
+      display:inline-block;
+      @include media($large-screen-up) {
+        width:75%;
+      }
+    }
     img {
-      float: left;
-      margin-right: 1em;
+      margin: 0 1em 1em 0;
       @include media($large-screen-up) {
         margin-right: 2em;
       }
-      max-width: 25%;
+      max-width: 100%;
       height: auto;
+    }
+    input[type="submit"] {
+      margin-right: 1em;
     }
     .title {
       @include h1;
@@ -30,9 +45,11 @@ section#podcast-header {
       }
     }
     .body {
-      margin: 0.75em 0 0.5em;
+      margin: 0.75em 0 0.75em;
     }
     ul.podcast-links {
+      display: inline-block;
+      margin-top: 1em;
       li {
         display: inline;
         &:after {

@@ -1,12 +1,29 @@
 <div class="podcast-header">
   <div class="inner">
-    <%= cl_image_tag(podcast.image, :alt => podcast.title, :width => 220, :height => 220, :crop => :scale) %>
-    <div class="title"><%= link_to podcast.title, podcast_path(podcast) %></div>
-    <div class="body"><%= podcast.body %></div>
-    <ul class="podcast-links">
-      <li><%= link_to "RSS", podcast_url(podcast, :format => :rss) %></li>
-      <% if podcast.itunes.present? %><li><%= link_to "Subscribe in iTunes", podcast.itunes %></li><% end %>
-      <li><%= link_to "Subscribe by Email", podcast_subscribe_new_path(:podcast_path => podcast.path) %></li>
-    </ul>
+    <div class="left">
+      <%= cl_image_tag(podcast.image, :alt => podcast.title, :width => 220, :height => 220, :crop => :scale) %>
+    </div>
+    <div class="right">
+      <div class="title"><%= link_to podcast.title, podcast_path(podcast) %></div>
+      <div class="body"><%= podcast.body %></div>
+      <% if show_footer != false %>
+        <%= form_tag(podcast_subscribe_create_path(:podcast_path => podcast.path), method: "post", id: "subscribe") do -%>
+          <h2 class="cta">Get new episodes delivered straight to your inbox.</h2>
+          <%= email_field(:email, :address, {id: "email", placeholder: "email address"}) %>
+          <%= submit_tag("Sign me up!") %>
+          <ul class="podcast-links">
+            <li><%= link_to "Subscribe by Email", podcast_subscribe_new_path(:podcast_path => podcast.path) %></li>
+            <li><%= link_to "RSS", podcast_url(podcast, :format => :rss) %></li>
+            <% if podcast.itunes.present? %><li><%= link_to "Subscribe in iTunes", podcast.itunes %></li><% end %>
+          </ul>
+        <% end %>
+      <% else %>
+        <ul class="podcast-links">
+          <li><%= link_to "Subscribe by Email", podcast_subscribe_new_path(:podcast_path => podcast.path) %></li>
+          <li><%= link_to "RSS", podcast_url(podcast, :format => :rss) %></li>
+          <% if podcast.itunes.present? %><li><%= link_to "Subscribe in iTunes", podcast.itunes %></li><% end %>
+        </ul>
+      <% end %>
+    </div>
   </div>
 </div>
