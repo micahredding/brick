@@ -1,4 +1,8 @@
 module EpisodesHelper
+  def media_wrapped_url(media_url)
+    "http://dts.podtrac.com/redirect.mp3/#{media_url}"
+  end
+
   def episode_path(episode, options={})
     url_for(options.merge(
       :controller => 'episodes',
