@@ -17,9 +17,9 @@ header.navigation {
         @include span-columns(8 of 12);
       }
     }
-    ul.social {
-      // @include span-columns(1 of 4);
-      display: none;
+    .social {
+      @include span-columns(4 of 4);
+      // display: inline-block;
       @include media($large-screen-up) {
         display: block;
         @include span-columns(4 of 12);
@@ -51,10 +51,15 @@ header.navigation {
         padding: 0.8em 0em 0.8em 0em;
       }
     }
-    ul.social {
+    .social {
       text-align: right;
-      li {
-        display: inline-block;
+      a {
+        background-color: $navigation-color-hover;
+        color: $navigation-color;
+        &:hover {
+          color: $navigation-color-hover;
+          background-color: black;
+        }
       }
     }
   }
@@ -71,7 +76,7 @@ header.navigation {
     }
     @include media($large-screen-up) {
       display: inline-block;
-      padding: 0.8em 0.5em 1.1em;
+      padding: 0.8em 0.8em 1.1em;
     }
   }
 }

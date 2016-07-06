@@ -37,11 +37,11 @@
       <% end %>
     </nav>
 
-    <ul class="social">
-      <li><a href="http://twitter.com/brickcaster"><i class="icon-twitter"></i></a></li>
-      <li><a href="http://facebook.com/brickcaster"><i class="icon-facebook"></i></a></li>
-      <li><a href="https://plus.google.com/107355867909504468216" rel="publisher"><i class="icon-google-plus"></i></a></li>
-    </ul>
+    <div class="social">
+      <% if @podcast %>
+        <%= link_to "Subscribe by Email", podcast_subscribe_new_path(:podcast_path => @podcast.path) %>
+      <% end %>
+    </div>
   </div>
 </header>
 
@@ -66,6 +66,5 @@
     </div>
   </div>
 <% end %>
-
 </body>
 </html>
