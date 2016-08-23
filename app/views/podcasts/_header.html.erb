@@ -4,7 +4,7 @@
       <%= cl_image_tag(podcast.image, :alt => podcast.title, :width => 220, :height => 220, :crop => :scale) %>
     </div>
     <div class="right">
-      <div class="title"><%= link_to podcast.title, podcast_path(podcast) %></div>
+      <h1 class="title"><%= link_to podcast.title, podcast_path(podcast) %></h1>
       <div class="body"><%= podcast.body %></div>
       <% if show_footer != false %>
         <%= form_tag(podcast_subscribe_create_path(:podcast_path => podcast.path), method: "post", id: "subscribe") do -%>
