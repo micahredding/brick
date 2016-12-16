@@ -67,9 +67,15 @@ class Episode < ActiveRecord::Base
     mp3_tags[:length].to_i
   end
 
+  def mp3_title
+    mp3_tags[:title]
+  end
+
   def get_media
     return nil unless media
-    update_attributes(:media_size => mp3_size, :media_length => mp3_length)
+    update_attributes(:media_size   => mp3_size,
+                      :media_length => mp3_length,
+                      :title        => mp3_title)
   end
 
 end
