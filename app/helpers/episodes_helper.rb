@@ -23,9 +23,27 @@ module EpisodesHelper
     ))
   end
 
+  class BrickRenderer < Redcarpet::Render::HTML
+    def add_amazon_affiliate_param(link)
+      separator = /\?/.match(link) ? '&' : '?'
+      link + separator + 'tag=micahredding-20'
+    end
+
+    def is_amazon_link?(link)
+      /http:\/\/(.*amazon\..*\/.*|.*amzn\.com\/.*|.*amzn\.to\/.*)/.match(link)
+    end
+
+    def link(link, title, content)
+      if is_amazon_link?(link)
+        link = add_amazon_affiliate_param(link)
+      end
+      "<a href='#{link}' title='#{title}' target='_blank'>#{content}</a>"
+    end
+  end
+
   def markdown_renderer
     @markdown_renderer ||= Redcarpet::Markdown.new(
-      Redcarpet::Render::HTML.new(:link_attributes => Hash["target" => "_blank"]),
+      BrickRenderer.new(:link_attributes => Hash["target" => "_blank"]),
       :hard_wrap => true,
       :autolink => true,
       :space_after_headers => true,
