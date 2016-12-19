@@ -30,7 +30,7 @@ module EpisodesHelper
     end
 
     def is_amazon_link?(link)
-      /http:\/\/(.*amazon\..*\/.*|.*amzn\.com\/.*|.*amzn\.to\/.*)/.match(link)
+      /(http|https):\/\/(.*amazon\..*\/.*|.*amzn\.com\/.*|.*amzn\.to\/.*)/.match(link)
     end
 
     def link(link, title, content)
