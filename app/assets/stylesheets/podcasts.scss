@@ -8,23 +8,32 @@ section#podcast-header {
   }
 }
 .podcast-header {
+  &.desktop-only {
+    display: none;
+    @include media($large-screen-up) {
+      display: block;
+    }
+  }
   .inner {
     @include outer-container;
     padding: 1em;
     @include media($xtra-large-screen-up) {
       padding: 2em 0em;
     }
+    .main, form, .form {
+      @include outer-container;
+    }
     .left {
       display:inline-block;
       vertical-align: top;
       @include media($large-screen-up) {
-        width:24%;
+        @include span-columns(3 of 12);
       }
     }
     .right {
       display:inline-block;
       @include media($large-screen-up) {
-        width:75%;
+        @include span-columns(9 of 12);
       }
     }
     img {
@@ -40,6 +49,7 @@ section#podcast-header {
     }
     .title {
       @include h1;
+      margin-bottom: 0.5em;
       a {
         color: #000000;
       }

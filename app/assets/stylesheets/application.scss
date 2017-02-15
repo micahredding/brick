@@ -28,6 +28,7 @@ html, body {
   // }
   audio {
     margin: 1em 0 1em;
+    vertical-align: middle;
   }
 }
 // .audiojs {
@@ -52,4 +53,20 @@ ul.category-list {
     list-style-type: disc;
   }
   margin-left: 1rem;
+}
+
+.cta.highlight-link {
+  text-align: center;
+  a {
+    background-color: $navigation-color-hover;
+    color: $navigation-color;
+    padding: 0.8em 1em;
+    &:hover {
+      background-color: black;
+    }
+    display: block;
+    @include media($medium-screen-up) {
+      display: inline-block;
+    }
+  }
 }

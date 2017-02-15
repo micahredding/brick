@@ -1,7 +1,4 @@
 header.navigation {
-  $navigation-color: #ffffff;
-  $navigation-color-hover: $light-blue;
-
   background-color: #000000;
   color: $navigation-color;
   font-weight: 300;
@@ -13,16 +10,16 @@ header.navigation {
     @include outer-container;
     nav {
       // @include span-columns(3 of 4);
-      @include media($large-screen-up) {
-        @include span-columns(8 of 12);
+      @include media($xtra-large-screen-up) {
+        @include span-columns(6 of 12);
       }
     }
     .social {
       @include span-columns(4 of 4);
       // display: inline-block;
-      @include media($large-screen-up) {
+      @include media($xtra-large-screen-up) {
         display: block;
-        @include span-columns(4 of 12);
+        @include span-columns(6 of 12);
       }
     }
     .site-name {
@@ -54,6 +51,9 @@ header.navigation {
     .social {
       text-align: right;
       a {
+        padding: 0.8em 1em;
+      }
+      a.highlight {
         background-color: $navigation-color-hover;
         color: $navigation-color;
         &:hover {

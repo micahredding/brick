@@ -12,6 +12,7 @@ class EpisodesController < ApplicationController
     @meta_title       = "#{@episode.title} | #{@podcast.title}"
     @meta_image       = @episode.override_image
     @meta_description = @episode.override_summary
+    @podcast_header_wrapper = 'desktop-only'
   end
 
   private

@@ -18,6 +18,7 @@ class PodcastsController < ApplicationController
     @meta_title       = @podcast.title
     @meta_image       = @podcast.image
     @meta_description = @podcast.body
+    @podcast_header_wrapper = 'all'
   end
 
   def subscribe_new

@@ -31,27 +31,30 @@
 <header class="navigation" role="banner">
   <div class="inner">
     <nav role="navigation" class="navigation">
-      <a href="/" class="site-name"><%= Brick::SITENAME %><% if @podcast %> &gt; <% end %></a>
-      <% if @podcast %>
-        <a href="<%= podcast_path(@podcast) %>" class="podcast-name"><%= @podcast.title %></a>
+      <% unless @podcast %>
+        <a href="/" class="site-name">The <%= Brick::SITENAME %> podcast network</a>
+      <% else %>
+        <a href="<%= podcast_path(@podcast) %>" class="site-name podcast-name"><%= @podcast.title.upcase %></a>
       <% end %>
     </nav>
 
     <div class="social">
       <% if @podcast %>
-        <%= link_to "Subscribe by Email", podcast_subscribe_new_path(:podcast_path => @podcast.path) %>
+        <%= link_to "RSS", podcast_url(@podcast, :format => :rss) %>
+        <% if @podcast.itunes.present? %><%= link_to "iTunes", @podcast.itunes %><% end %>
+        <%= link_to "Subscribe by Email", podcast_subscribe_new_path(podcast_path: @podcast.path), class: 'highlight' %>
       <% end %>
     </div>
   </div>
 </header>
 
 <section class="social-sharing">
-  <a href="https://twitter.com/intent/tweet?text=<%= u @meta_title %>&url=<%= @meta_url %>"><img src="http://s9.postimg.org/9lptzzutn/twitter.png" alt="Twitter link" /></a><a href="https://www.facebook.com/sharer/sharer.php?u=<%= @meta_url %>"><img src="http://s9.postimg.org/wboysze17/facebook.png" alt="Facebook link" /></a><a href="https://plus.google.com/share?url=<%= @meta_url %>"><img src="http://s9.postimg.org/c1n203nij/google.png" alt="Google Plus link" /></a>
+  <a href="https://twitter.com/intent/tweet?text=<%= u @meta_title %>&url=<%= @meta_url %>"><img src="http://s9.postimg.org/9lptzzutn/twitter.png" alt="Twitter link" /></a><a href="https://www.facebook.com/sharer/sharer.php?u=<%= @meta_url %>"><img src="http://s9.postimg.org/wboysze17/facebook.png" alt="Facebook link" /></a>
 </section>
 
 <% if @podcast && @podcast_show_header != false %>
   <section id="podcast-header">
-    <%= render :partial => "podcasts/header", :locals => {:podcast => @podcast, :show_footer => true} %>
+    <%= render :partial => "podcasts/header", :locals => {:podcast => @podcast, show_form: false, wrapper_class: @podcast_header_wrapper} %>
   </section>
 <% end %>
 

@@ -13,7 +13,7 @@
         <source src="<%= media_wrapped_url(@episode.media) %>" type="audio/mp3">
         <p>Your browser does not support HTML5 audio, but you can <a href="<%= @episode.media %>">(download)</a> this episode!</p>
       </audio>
-      <p><a href="<%= media_wrapped_url(@episode.media) %>">(download)</a></p>
+      <a href="<%= media_wrapped_url(@episode.media) %>">(download)</a>
     </div>
   <% end %>
 
