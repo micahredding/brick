@@ -54,7 +54,7 @@
 
 <% if @podcast && @podcast_show_header != false %>
   <section id="podcast-header">
-    <%= render :partial => "podcasts/header", :locals => {:podcast => @podcast, show_form: false, wrapper_class: @podcast_header_wrapper} %>
+    <%= render :partial => "podcasts/header", :locals => {:podcast => @podcast, show_form: true, wrapper_class: @podcast_header_wrapper} %>
   </section>
 <% end %>
 

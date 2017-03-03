@@ -6,6 +6,7 @@ class PodcastsController < ApplicationController
   def index
     @podcasts = Podcast.where(:public => true).order(:updated_at => :desc)
     @meta_title = Brick::SITETITLE
+    @podcast_header_wrapper = 'all'
   end
 
   # GET /podcast_path

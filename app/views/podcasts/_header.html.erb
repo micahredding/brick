@@ -10,13 +10,7 @@
       </div>
     </div>
     <% if show_form %>
-      <%= form_tag(podcast_subscribe_create_path(:podcast_path => podcast.path), method: "post", id: "subscribe") do -%>
-        <h2 class="cta">Get new episodes delivered straight to your inbox.</h2>
-        <%= email_field(:email, :address, {id: "email", placeholder: "email address"}) %>
-        <%= submit_tag("Subscribe by Email") %>
-      <% end %>
-    <% else %>
-      <div class="cta highlight-link"><%= link_to "Subscribe by Email", podcast_subscribe_new_path(:podcast_path => @podcast.path) %></div>
+      <div class="cta highlight-link"><%= link_to "Subscribe by Email", podcast_subscribe_new_path(:podcast_path => podcast.path) %></div>
     <% end %>
   </div>
 </div>
