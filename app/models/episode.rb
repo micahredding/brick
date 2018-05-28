@@ -36,6 +36,10 @@ class Episode < ActiveRecord::Base
     image.present? ? image : podcast.image
   end
 
+  def duration
+    Time.at(self.media_length).utc.strftime("%H:%M:%S")
+  end
+
   def mp3_tags
     return @mp3_tags if @mp3_tags.present?
     return {} if media.empty?
