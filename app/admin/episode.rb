@@ -4,7 +4,21 @@ ActiveAdmin.register Episode do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :podcast_id, :number, :title, :body, :recorded_at, :published_at, :image, :media, :media_length, :media_size, :summary, :published, :state
+permit_params :podcast_id,
+              :number,
+              :title,
+              :guest_name,
+              :guest_twitter,
+              :body,
+              :recorded_at,
+              :published_at,
+              :image,
+              :media,
+              :media_length,
+              :media_size,
+              :summary,
+              :published,
+              :state
 #
 # or
 #
@@ -36,6 +50,8 @@ permit_params :podcast_id, :number, :title, :body, :recorded_at, :published_at, 
       f.input :podcast
       f.input :number
       f.input :title
+      f.input :guest_name
+      f.input :guest_twitter
       f.input :summary, :input_html => {:rows => 3}
       f.input :body
       f.input :recorded_at
