@@ -1,5 +1,9 @@
 xml.instruct! :xml, :version => "1.0"
-xml.rss :version => "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd", "xmlns:atom" => "http://www.w3.org/2005/Atom", "xmlns:content"=>"http://purl.org/rss/1.0/modules/content/" do
+xml.rss :version  => "2.0",
+  "xmlns:itunes"  => "http://www.itunes.com/dtds/podcast-1.0.dtd",
+  "xmlns:atom"    => "http://www.w3.org/2005/Atom",
+  "xmlns:content" => "http://purl.org/rss/1.0/modules/content/",
+  'xmlns:social'  => "http://micahredding.com/xmlns/social" do
   xml.channel do
     xml.atom :link, :href => podcast_url(@podcast, :format => :rss), :rel => "self", :type => "application/rss+xml"
 
@@ -58,6 +62,8 @@ xml.rss :version => "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast
         # episode meta
         xml.pubDate episode.published_at.to_formatted_s(:rfc822)
         xml.itunes :duration, episode.duration
+        xml.social :guest_name, episode.guest_name
+        xml.social :guest_twitter, episode.guest_twitter
 
         # podcast meta
         xml.itunes :author,  @podcast.author || 'Micah Redding'
