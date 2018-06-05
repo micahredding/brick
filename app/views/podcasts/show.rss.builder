@@ -66,8 +66,8 @@ xml.rss :version  => "2.0",
         xml.social :guest_twitter, episode.guest_twitter
 
         # podcast meta
-        xml.itunes :author,  @podcast.author || 'Micah Redding'
-        xml.itunes :image, :href => episode.override_image
+        xml.itunes :author, [@podcast.author, episode.guest_name].join(', ')
+        xml.itunes :image, href: episode.override_image
         xml.itunes :keywords, @podcast.keywords
       end
     end
